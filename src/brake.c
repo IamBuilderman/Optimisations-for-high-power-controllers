@@ -20,8 +20,18 @@
 // Brake signal
 void EXTI_PORTA_IRQHandler(void) __interrupt(EXTI_PORTA_IRQHANDLER)
 {
-    // original code did nothing except kill the mcu when brake was enabled at startup (will never retire)
-    return;
+   // restored original code: kill the mcu when brake is enabled at startup for safety and testing purposes
+	if (brake_is_set())
+  {
+    //brake_coast_enable ();
+    //stop_cruise_control ();
+  }
+  else
+  {
+    //brake_coast_disable ();
+    //pwm_set_duty_cycle (0);
+    //stop_cruise_control ();
+  }
 }
 
 void brake_init (void)
