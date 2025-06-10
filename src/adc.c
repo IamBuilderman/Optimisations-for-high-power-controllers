@@ -50,9 +50,9 @@ void adc_init(void) {
     for (ui8_i = 0; ui8_i < 8; ui8_i++) {
         //ui16_counter = TIM2_GetCounter () + 1000;
         // while (TIM2_GetCounter () < ui16_counter) ; // delay
-        delay_halfms(200);
+        delay_halfms(400); //doubled the delay to discard startup deviations
         adc_trigger();
-        delay_halfms(200);
+        delay_halfms(400); //doubled the delay to discard startup deviations
         ui16_current_cal_b = ui16_adc_read_motor_total_current();
         ui16_x4_cal_b = ui16_adc_read_x4_value();
         ui16_throttle_cal_b = ui8_adc_read_throttle();
@@ -67,9 +67,9 @@ void adc_init(void) {
     
     // read and average a few values of ADC
     for (ui8_i = 0; ui8_i < 16; ui8_i++) {
-        delay_halfms(30);
+        delay_halfms(60); //doubled the delay to increase averaging period
         adc_trigger();
-        delay_halfms(30);
+        delay_halfms(60); //doubled the delay to increase averaging period
         ui16_current_cal_b += ui16_adc_read_motor_total_current();
         ui16_x4_cal_b += ui16_adc_read_x4_value();
         ui16_throttle_cal_b += ui8_adc_read_throttle();
