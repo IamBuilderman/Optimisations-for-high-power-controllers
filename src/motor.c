@@ -390,8 +390,8 @@ void motor_slow_update_pre(void) {
 void motor_slow_update_post(void) {
 #ifdef USE_FIELD_WEAKENING
 #define FIELD_WEAK_MIN_SPEED 145
-#define FIELD_WEAK_MAX_CURR 100
-#define FIELD_WEAK_MAX_ANGLE 15
+#define FIELD_WEAK_MAX_CURR 50
+#define FIELD_WEAK_MAX_ANGLE 30
 	const uint8_t default_curr_target = 175;
 	const uint8_t max_angle_def = 143;
 	uint8_t curr_target = curr_target_ctrl;
